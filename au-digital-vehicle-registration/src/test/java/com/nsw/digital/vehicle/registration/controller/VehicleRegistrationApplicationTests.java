@@ -87,7 +87,7 @@ class VehicleRegistrationApplicationTests {
 		beanTester.testBean(VehicleRequest.class);		
 		Mockito.when(vehicleServiceTest.saveVehicle(vehicleRequest)).thenReturn(vehicleResponse);
 		ResponseEntity<VehicleResponse> response = vehicleControllerTest.saveVehicle(vehicleRequest);
-		assertEquals(200, response.getStatusCodeValue());
+		assertEquals(201, response.getStatusCodeValue());
 	}
 	
 	@Test

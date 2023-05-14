@@ -80,7 +80,7 @@ public class VehicleRegistrationServiceImplTest {
 	@Test
 	void testSaveVehicle(){
         Mockito.when(vehicleRepoTest.save(ArgumentMatchers.any(VehicleEntity.class))).thenReturn(vehicle);
-        VehicleResponse response = new VehicleResponse();
+        VehicleResponse response = vehicleServiceImplTest.saveVehicle(vehicleRequest);
         response.setId(vehicle.getVehicleID());
         response.setStatus("Success");
         assertEquals(Long.valueOf(100),response.getId());
@@ -111,7 +111,18 @@ public class VehicleRegistrationServiceImplTest {
 		Mockito.when(vehicleRepoTest.findById(vehicleId)).thenReturn(Optional.of(vehicle));
 		VehicleEntity response = vehicleServiceImplTest.findByVehicleID(vehicleId);
 		assertNotNull(response.getMake());
+		assertEquals("CX78GD",response.getRego());
 	}
+
+	@Test
+	public void testVehicleNotFound() {
+		Mockito.when(vehicleRepoTest.findById(any(Long.class))).thenReturn(Optional.empty());
+
+		VehicleNotFoundException exp = assertThrows(VehicleNotFoundException.class, () -> vehicleServiceImplTest.findByVehicleID(200L));
+		assertEquals("Vehicle information not found for ID: 200", exp.getMessage());
+	}
+
+
 	
 	
 	
