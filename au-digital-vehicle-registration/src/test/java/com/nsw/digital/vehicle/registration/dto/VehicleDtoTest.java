@@ -8,7 +8,9 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 import com.nsw.digital.vehicle.registration.persist.dto.VehicleEntity;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class VehicleDtoTest {
 
 	@InjectMocks

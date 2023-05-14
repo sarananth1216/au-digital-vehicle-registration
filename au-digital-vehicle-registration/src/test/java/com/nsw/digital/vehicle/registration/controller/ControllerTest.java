@@ -1,19 +1,16 @@
 package com.nsw.digital.vehicle.registration.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nsw.digital.vehicle.registration.exception.VehicleNotFoundException;
 import com.nsw.digital.vehicle.registration.model.VehicleRequest;
 import com.nsw.digital.vehicle.registration.model.VehicleResponse;
 import com.nsw.digital.vehicle.registration.persist.dto.VehicleEntity;
 import com.nsw.digital.vehicle.registration.persist.repo.VehicleRepo;
 import com.nsw.digital.vehicle.registration.service.VehicleService;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,8 +18,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
