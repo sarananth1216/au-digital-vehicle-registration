@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
@@ -45,6 +46,8 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public List<VehicleEntity> getAllVehicles() {
         List<VehicleEntity> vehicleEntityList = (List<VehicleEntity>) vehicleRepo.findAll();
+        List<VehicleEntity> list2 = vehicleEntityList.stream().filter(v -> v.getYear()==2011).collect(Collectors.toList());
+        System.out.println(list2.toString());
         return vehicleEntityList;
     }
 

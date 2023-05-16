@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+import com.nsw.digital.vehicle.registration.exception.VehicleAlreadyExistsException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,7 +79,7 @@ public class VehicleRegistrationServiceImplTest {
 	}
 	
 	@Test
-	void testSaveVehicle(){
+	void testSaveVehicle() throws VehicleAlreadyExistsException {
         Mockito.when(vehicleRepoTest.save(ArgumentMatchers.any(VehicleEntity.class))).thenReturn(vehicle);
         VehicleResponse response = vehicleServiceImplTest.saveVehicle(vehicleRequest);
         response.setId(vehicle.getVehicleID());

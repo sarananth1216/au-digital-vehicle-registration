@@ -1,5 +1,6 @@
 package com.nsw.digital.vehicle.registration.controller;
 
+import com.nsw.digital.vehicle.registration.exception.VehicleAlreadyExistsException;
 import com.nsw.digital.vehicle.registration.exception.VehicleNotFoundException;
 import com.nsw.digital.vehicle.registration.model.VehicleRequest;
 import com.nsw.digital.vehicle.registration.model.VehicleResponse;
@@ -82,7 +83,7 @@ class VehicleRegistrationApplicationTests {
 	
 	
 	@Test
-	void vehicleControllerSaveTestMethod() {
+	void vehicleControllerSaveTestMethod() throws VehicleAlreadyExistsException {
 		BeanTester beanTester = new BeanTester();
 		beanTester.testBean(VehicleRequest.class);		
 		Mockito.when(vehicleServiceTest.saveVehicle(vehicleRequest)).thenReturn(vehicleResponse);

@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="TB_VEHICLE")
 @Data
-
+@SequenceGenerator(name="VEHICLE_SEQUENCE_GENERATOR",sequenceName = "VEHICLE_SEQUENCE",initialValue = 7)
 public class VehicleEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VEHICLE_SEQUENCE_GENERATOR")
     @Column(name="VEHICLE_ID")
     private Long vehicleID;
     @Column(name="VEHICLE_REGO")
