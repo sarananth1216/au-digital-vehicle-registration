@@ -1,5 +1,6 @@
 package com.nsw.digital.vehicle.registration.controller;
 
+import com.nsw.digital.vehicle.registration.exception.VehicleAlreadyExistsException;
 import com.nsw.digital.vehicle.registration.exception.VehicleNotFoundException;
 import com.nsw.digital.vehicle.registration.model.VehicleRequest;
 import com.nsw.digital.vehicle.registration.model.VehicleResponse;
@@ -22,7 +23,7 @@ public class VehicleController {
     private VehicleService vehicleService;
 
     @PostMapping("/addVehicle")
-    public ResponseEntity<VehicleResponse> saveVehicle(@RequestBody @Valid VehicleRequest vehicleRequest){
+    public ResponseEntity<VehicleResponse> saveVehicle(@RequestBody @Valid VehicleRequest vehicleRequest) throws VehicleAlreadyExistsException {
         return new ResponseEntity<VehicleResponse>(vehicleService.saveVehicle(vehicleRequest), HttpStatus.CREATED);
 
     }

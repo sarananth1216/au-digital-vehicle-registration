@@ -1,6 +1,7 @@
 package com.nsw.digital.vehicle.registration.advice;
 
 
+import com.nsw.digital.vehicle.registration.exception.VehicleAlreadyExistsException;
 import com.nsw.digital.vehicle.registration.exception.VehicleNotFoundException;
 import com.nsw.digital.vehicle.registration.model.ErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,15 @@ public class ApplicationExceptionHandler {
     public ErrorResponse handleBusinessException(VehicleNotFoundException ex){
         Map<String, String> errorMap = new HashMap<String, String>();
             errorMap.put("Business Exception",ex.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(errorMap);
+        return errorResponse;
+    }
+
+    @ResponseStatus(HttpStatus.ALREADY_REPORTED)
+    @ExceptionHandler(VehicleAlreadyExistsException.class)
+    public ErrorResponse VehicleAlreadyExistsException(VehicleAlreadyExistsException ex){
+        Map<String, String> errorMap = new HashMap<String, String>();
+        errorMap.put("Already Exists Exception",ex.getMessage());
         ErrorResponse errorResponse = new ErrorResponse(errorMap);
         return errorResponse;
     }
